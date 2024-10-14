@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
-export default function Login() {
+export default function OAuth() {
   return (
     <div className="flex justify-center items-center h-[100dvh]">
       <div className="flex flex-col bg-background-standard-primary rounded-radius-700 p-spacing-500 gap-y-spacing-550">
