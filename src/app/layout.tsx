@@ -28,7 +28,7 @@ export default function RootLayout({
     <html lang="ko">
       <body className={`${suitVariable.variable} antialiased`}>
         <RootWrapper>
-          <div className="flex flex-row gap-spacing-700 w-full h-[100dvh] p-spacing-900">
+          <div className="flex flex-row gap-spacing-700 w-full h-[100dvh] p-spacing-900 max-w-[1600px]">
             <MenuBar />
             {children}
           </div>

@@ -16,7 +16,7 @@ export default function RootWrapper({ children }: RootWrapperProps) {
     <Provider>
       <QueryClientProvider client={queryClient}>
         <GoogleOAuthProvider clientId="490381879-9976i94b3vvu2pabjttjgma8hscajrin.apps.googleusercontent.com">
-          {children}
+          <div className="flex justify-center items-center w-full">{children}</div>
         </GoogleOAuthProvider>
       </QueryClientProvider>
     </Provider>
