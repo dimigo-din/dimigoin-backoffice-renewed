@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 export default function OAuth() {
   return (
-    <div className="flex justify-center items-center w-full">
+    <div className="w-full flex flex-col justify-center items-center rounded-radius-600 border border-line-outline p-spacing-600">
       <div className="flex flex-col bg-background-standard-primary rounded-radius-700 p-spacing-500 gap-y-spacing-550">
         <div className="flex flex-col justify-start items-start p-spacing-100 gap-spacing-150">
           <span className="text-label text-content-standard-tertiary">
