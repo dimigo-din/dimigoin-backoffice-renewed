@@ -1,8 +1,10 @@
 import type { Metadata } from 'next';
 import localFont from 'next/font/local';
 import './globals.css';
+import MenuBar from '@/components/MenuBar';
 import RootWrapper from '@/components/RootWrapper';
 import type React from 'react';
+import 'react-material-symbols/rounded';
 
 const suitVariable = localFont({
   src: './fonts/SUIT-Variable.woff2',
@@ -25,7 +27,12 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <body className={`${suitVariable.variable} antialiased`}>
-        <RootWrapper>{children}</RootWrapper>
+        <RootWrapper>
+          <div className="flex flex-row gap-spacing-700 w-full h-[100dvh] p-spacing-900">
+            <MenuBar />
+            {children}
+          </div>
+        </RootWrapper>
       </body>
     </html>
   );
