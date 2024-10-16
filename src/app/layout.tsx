@@ -1,13 +1,13 @@
 import type { Metadata } from 'next';
 import localFont from 'next/font/local';
-import '../globals.css';
+import './globals.css';
 import type React from 'react';
 import 'react-material-symbols/rounded';
 import MenuBar from '@/components/MenuBar/MenuBar';
 import RootWrapper from '@/components/RootWrapper';
 
 const suitVariable = localFont({
-  src: '../fonts/SUIT-Variable.woff2',
+  src: './fonts/SUIT-Variable.woff2',
   variable: '--font-suit-variable',
 });
 

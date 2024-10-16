@@ -17,13 +17,13 @@ export default function Laundry() {
           </div>
         </div>
       </div>
-      <div className="grid grid-cols-5 gap-spacing-400">
-        <span>asdf</span>
-        <span>asdf</span>
-        <span>asdf</span>
-        <span>asdf</span>
-        <span>asdf</span>
-        <span>asdf</span>
+      <div className="flex flex-col gap-spacing-700 overflow-auto">
+        <div className="flex flex-col gap-spacing-400">
+          <strong className="text-body text-content-standard-secondary">학봉관 2층 중앙 세탁기</strong>
+          <div className="grid grid-cols-5 gap-spacing-400">
+            <div className="bg-background-standard-secondary p-spacing-400 rounded-radius-300">asdf</div>
+          </div>
+        </div>
       </div>
     </div>
   );

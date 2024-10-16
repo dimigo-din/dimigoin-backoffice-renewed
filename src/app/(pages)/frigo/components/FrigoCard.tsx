@@ -33,7 +33,7 @@ const FrigoCard: React.FC<FrigoCardProps> = ({ student, details, type }) => {
 
   return (
     <div
-      className={`flex flex-row justify-between rounded-radius-400 px-spacing-700 p-spacing-400 items-center ${getCardStyle()}`}>
+      className={`flex flex-row justify-between rounded-radius-300 px-spacing-700 p-spacing-400 items-center ${getCardStyle()}`}>
       <div className="flex flex-col gap-spacing-200">
         <div className="flex flex-row gap-spacing-200 items-center">
           <strong className="text-body">

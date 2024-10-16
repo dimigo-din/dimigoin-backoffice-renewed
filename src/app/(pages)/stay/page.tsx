@@ -1,4 +1,3 @@
-import StaySection from '@/islands/sections/StaySection';
 import { MaterialSymbol } from 'react-material-symbols';
 
 export default function Stay() {
@@ -19,6 +18,7 @@ export default function Stay() {
               </button>
             </form>
           </div>
+          <div className="flex flex-col gap" />
         </div>
         <div className="w-full rounded-radius-600 bg-background-standard-primary p-spacing-600 flex flex-col gap-spacing-700 overflow-auto">
           <div className="flex flex-col gap-spacing-400">
