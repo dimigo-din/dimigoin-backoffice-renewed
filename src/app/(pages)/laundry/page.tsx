@@ -1,4 +1,3 @@
-import LaundrySection from '@/islands/sections/LaundrySection';
 import React from 'react';
 
 export default function Laundry() {

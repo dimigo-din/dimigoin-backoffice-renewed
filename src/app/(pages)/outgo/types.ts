@@ -1,9 +1,20 @@
-export interface OutgoCardProps {
-  studentId: string;
+export interface StudentInfo {
+  grade: number;
+  class: number;
+  number: number;
   name: string;
-  status: string;
+  gender: 'male' | 'female';
+}
+
+export interface OutgoCardProps {
+  student: StudentInfo;
+  seat: string;
   details: string;
   type: 'pending' | 'approved' | 'rejected';
 }
 
 export type OutgoCardData = OutgoCardProps;
+
+export type GradeFilter = '1' | '2' | '3' | null;
+export type GenderFilter = 'male' | 'female' | null;
+export type StatusFilter = 'pending' | 'approved' | 'rejected' | null;

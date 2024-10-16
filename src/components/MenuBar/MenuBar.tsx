@@ -1,7 +1,7 @@
 'use client';
 
 import { MenubarAtom } from '@/components/MenuBar/atom';
-import type { MenuItemProps } from '@/types/components/MenuBarTypes';
+import type { MenuItemProps } from '@/components/MenuBar/types';
 import { useAtom } from 'jotai';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -52,24 +52,26 @@ export default function MenuBar() {
   }, [updateSelectedMenuItem]);
 
   return (
-    <div className="w-[240px] flex flex-col rounded-radius-600 bg-background-standard-primary p-spacing-600 gap-spacing-900 overflow-hidden flex-shrink-0">
-      <div className="flex flex-col gap-spacing-550">
-        <Link href="/public">
-          <Image src="/images/dimigoin_logo.svg" alt="dimigoin" width={24} height={24} draggable={false} />
-        </Link>
-        <div className="flex flex-row justify-between items-center">
-          <div className="flex flex-row gap-spacing-100 items-end">
-            <strong className="text-heading">김아이</strong>
-            <span className="text-body text-content-standard-tertiary">선생님</span>
+    <div className="w-[240px] flex flex-col rounded-radius-600 bg-background-standard-primary p-spacing-600 justify-between overflow-hidden flex-shrink-0">
+      <div className="flex flex-col gap-spacing-900">
+        <div className="flex flex-col gap-spacing-550">
+          <Link href="/">
+            <Image src="/images/dimigoin_logo.svg" alt="dimigoin" width={24} height={24} draggable={false} />
+          </Link>
+          <div className="flex flex-row justify-between items-center">
+            <div className="flex flex-row gap-spacing-100 items-end">
+              <strong className="text-heading">김아이</strong>
+              <span className="text-body text-content-standard-tertiary">선생님</span>
+            </div>
+            <MaterialSymbol className="text-content-standard-secondary" icon="logout" size={24} weight={300} />
           </div>
-          <MaterialSymbol className="text-content-standard-secondary" icon="logout" size={24} weight={300} />
         </div>
+        <nav className="flex flex-col">
+          {menuItems.map((item) => (
+            <MenuItem key={item.label} {...item} />
+          ))}
+        </nav>
       </div>
-      <nav className="flex flex-col">
-        {menuItems.map((item) => (
-          <MenuItem key={item.label} {...item} />
-        ))}
-      </nav>
     </div>
   );
 }
