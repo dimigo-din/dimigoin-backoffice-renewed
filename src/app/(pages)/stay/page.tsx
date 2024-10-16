@@ -1,6 +1,7 @@
+import StaySection from '@/islands/sections/StaySection';
 import { MaterialSymbol } from 'react-material-symbols';
 
-export default function StaySection() {
+export default function Stay() {
   return (
     <div className="w-full flex flex-col gap-spacing-600 overflow-auto">
       <div className="w-full flex flex-row gap-spacing-600 h-[400px]">

@@ -1,6 +1,6 @@
 'use client';
 
-import { selectedMenuItemAtom } from '@/atoms/menuBarState';
+import { MenubarAtom } from '@/components/MenuBar/atom';
 import type { MenuItemProps } from '@/types/components/MenuBarTypes';
 import { useAtom } from 'jotai';
 import Image from 'next/image';
@@ -12,8 +12,8 @@ import { MaterialSymbol } from 'react-material-symbols';
 const menuItems: MenuItemProps[] = [
   { icon: 'school', label: '잔류', href: '/stay' },
   { icon: 'forest', label: '잔류 외출', href: '/outgo' },
-  { icon: 'local_laundry_service', label: '세탁', href: '/laundry' },
   { icon: 'door_open', label: '금요귀가', href: '/frigo' },
+  { icon: 'local_laundry_service', label: '세탁', href: '/laundry' },
   { icon: 'artist', label: '기상송', href: '/song' },
 ];
 
@@ -37,7 +37,7 @@ const MenuItem = React.memo(({ icon, label, href }: MenuItemProps) => {
 MenuItem.displayName = 'MenuItem';
 
 export default function MenuBar() {
-  const [, setSelectedMenuItem] = useAtom(selectedMenuItemAtom);
+  const [, setSelectedMenuItem] = useAtom(MenubarAtom);
   const pathname = usePathname();
 
   const updateSelectedMenuItem = useCallback(() => {
@@ -54,7 +54,7 @@ export default function MenuBar() {
   return (
     <div className="w-[240px] flex flex-col rounded-radius-600 bg-background-standard-primary p-spacing-600 gap-spacing-900 overflow-hidden flex-shrink-0">
       <div className="flex flex-col gap-spacing-550">
-        <Link href="/">
+        <Link href="/public">
           <Image src="/images/dimigoin_logo.svg" alt="dimigoin" width={24} height={24} draggable={false} />
         </Link>
         <div className="flex flex-row justify-between items-center">

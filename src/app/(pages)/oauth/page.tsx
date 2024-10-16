@@ -22,7 +22,7 @@ export default function OAuth() {
         </div>
         <Link
           className="w-[360px] bg-components-translucent-tertiary border border-line-outline rounded-radius-300 flex flex-row justify-center items-center gap-spacing-200 px-spacing-500 py-spacing-400"
-          href="/">
+          href="/public">
           <Image src="/images/google_icon.svg" alt="google" width={20} height={20} />
           <span className="text-label text-content-standard-primary">디미고 구글계정으로 로그인</span>
         </Link>
