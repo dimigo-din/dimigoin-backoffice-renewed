@@ -5,6 +5,7 @@ import type React from 'react';
 import 'react-material-symbols/rounded';
 import MenuBar from '@/components/MenuBar/MenuBar';
 import RootWrapper from '@/components/RootWrapper';
+import { GoogleOAuthProvider } from '@react-oauth/google';
 
 const suitVariable = localFont({
   src: './fonts/SUIT-Variable.woff2',
@@ -25,15 +26,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ko">
-      <body className={`${suitVariable.variable} antialiased`}>
-        <RootWrapper>
-          <div className="flex flex-row gap-spacing-700 w-full h-[100dvh] p-spacing-900 max-w-[1600px]">
-            <MenuBar />
-            {children}
-          </div>
-        </RootWrapper>
-      </body>
-    </html>
+    <GoogleOAuthProvider clientId={process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID || ''}>
+      <html lang="ko">
+        <body className={`${suitVariable.variable} antialiased`}>
+          <RootWrapper>
+            <div className="flex flex-row gap-spacing-700 w-full h-[100dvh] p-spacing-900 max-w-[1600px]">
+              <MenuBar />
+              {children}
+            </div>
+          </RootWrapper>
+        </body>
+      </html>
+    </GoogleOAuthProvider>
   );
 }

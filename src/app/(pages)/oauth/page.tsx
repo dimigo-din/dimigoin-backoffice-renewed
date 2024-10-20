@@ -1,7 +1,16 @@
+'use client';
+
+import { googleLogin } from '@/lib/api/auth';
+import { useLogin } from '@/lib/hooks/useLogin';
+import { useGoogleLogin } from '@react-oauth/google';
 import Image from 'next/image';
-import Link from 'next/link';
 
 export default function OAuth() {
+  const { login } = useLogin();
+  const handleGoogleLogin = () => {
+    login();
+  };
+
   return (
     <div className="w-full flex flex-col justify-center items-center rounded-radius-600 border border-line-outline p-spacing-600">
       <div className="flex flex-col bg-background-standard-primary rounded-radius-700 p-spacing-500 gap-y-spacing-550">
@@ -20,12 +29,13 @@ export default function OAuth() {
           <span className="text-label text-content-standard-tertiary">요청한 정보</span>
           <strong className="text-content-standard-primary text-body">이메일, 이름, 학번</strong>
         </div>
-        <Link
+        <button
+          type={'button'}
           className="w-[360px] bg-components-translucent-tertiary border border-line-outline rounded-radius-300 flex flex-row justify-center items-center gap-spacing-200 px-spacing-500 py-spacing-400"
-          href="/public">
+          onClick={handleGoogleLogin}>
           <Image src="/images/google_icon.svg" alt="google" width={20} height={20} />
           <span className="text-label text-content-standard-primary">디미고 구글계정으로 로그인</span>
-        </Link>
+        </button>
       </div>
     </div>
   );
