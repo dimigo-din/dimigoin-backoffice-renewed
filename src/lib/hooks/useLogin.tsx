@@ -5,7 +5,7 @@ const useLogin = () => {
     hosted_domain: 'dimigo.hs.kr',
     flow: 'auth-code',
     ux_mode: 'popup',
-    redirect_uri: process.env.BACKOFFICE_BASE_URL,
+    redirect_uri: process.env.NEXT_PUBLIC_BACKOFFICE_BASE_URL,
     onSuccess: async (auth) => {
       await googleLogin({ token: auth.code });
     },

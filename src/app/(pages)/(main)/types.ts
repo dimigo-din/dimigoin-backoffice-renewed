@@ -6,7 +6,7 @@ export interface StudentCardProps {
     name: string;
   };
 
-  frigo: boolean;
+  frigo: string | null;
   stay: boolean;
   outgo: number;
 }

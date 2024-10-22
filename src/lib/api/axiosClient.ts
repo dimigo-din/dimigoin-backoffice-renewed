@@ -1,7 +1,5 @@
-'use client';
-
 import { logout, refreshJWT } from '@/lib/api/auth';
-import axios, { type AxiosError, type AxiosRequestConfig } from 'axios';
+import axios from 'axios';
 import * as cookie from '../cookie';
 
 const MAX_REQUESTS_COUNT = 1;
@@ -9,8 +7,7 @@ const INTERVAL_MS = 10;
 let PENDING_REQUESTS = 0;
 
 const instance = axios.create({
-  baseURL: process.env.API_BASE_URL,
-  withCredentials: false,
+  baseURL: process.env.NEXT_PUBLIC_API_BASE_URL,
   headers: {
     'Content-Type': 'application/json',
   },
@@ -19,9 +16,14 @@ const instance = axios.create({
 instance.interceptors.request.use(
   (config) =>
     new Promise((resolve, reject) => {
+      PENDING_REQUESTS++;
+
+      const accessToken = cookie.get('token');
+      if (accessToken) {
+        config.headers.Authorization = `Bearer ${accessToken}`;
+      }
       const interval = setInterval(() => {
-        if (PENDING_REQUESTS < MAX_REQUESTS_COUNT) {
-          PENDING_REQUESTS++;
+        if (PENDING_REQUESTS <= MAX_REQUESTS_COUNT) {
           clearInterval(interval);
           resolve(config);
         }
@@ -31,33 +33,20 @@ instance.interceptors.request.use(
 
 instance.interceptors.response.use(
   (response) => {
-    PENDING_REQUESTS = Math.max(0, PENDING_REQUESTS - 1);
+    PENDING_REQUESTS--;
     return Promise.resolve(response);
   },
   (error) => {
-    PENDING_REQUESTS = Math.max(0, PENDING_REQUESTS - 1);
-  },
-);
+    PENDING_REQUESTS--;
 
-instance.interceptors.request.use(
-  (config) => {
-    const accessToken = cookie.get('token');
-    if (accessToken) {
-      config.headers.Authorization = `Bearer ${accessToken}`;
-    }
-    return config;
-  },
-  (error) => Promise.reject(error),
-);
-
-instance.interceptors.response.use(
-  (response) => response,
-  async (error: AxiosError) => {
+    console.log('asdf');
     if (error.response?.status === 401) {
       const refreshToken = cookie.get('refresh');
       refreshJWT({ token: refreshToken }).catch((e) => {
         logout(true);
       });
+    } else {
+      return Promise.reject(error);
     }
   },
 );

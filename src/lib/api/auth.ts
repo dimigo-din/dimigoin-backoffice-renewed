@@ -12,7 +12,8 @@ const client = axios.create({
 });
 
 export const logout = async (doNotRemoveToken = false) => {
-  if (doNotRemoveToken) await axiosClient.post('/auth/logout', { token: localStorage.getItem('refresh') });
+  if (doNotRemoveToken)
+    await axiosClient.post('https://api.dimigo.in/auth/logout', { token: localStorage.getItem('refresh') });
 
   cookie.remove('token');
   localStorage.clear();
@@ -20,7 +21,7 @@ export const logout = async (doNotRemoveToken = false) => {
 };
 
 export const googleLogin = async ({ token }: { token: string }) => {
-  const { data } = await client.post('auth/login/web', {
+  const { data } = await client.post('https://api.dimigo.in/auth/login/web', {
     token,
   });
   cookie.set('token', data.accessToken, {});
@@ -30,7 +31,7 @@ export const googleLogin = async ({ token }: { token: string }) => {
 };
 
 export const refreshJWT = async ({ token }: { token: string }) => {
-  const { data } = await axiosClient.post('/auth/refresh', { token });
+  const { data } = await axiosClient.post('https://api.dimigo.in/auth/refresh', { token });
   cookie.set('token', data.accessToken, {});
   localStorage.setItem('refresh', data.refreshToken);
 };
